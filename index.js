@@ -1,3 +1,4 @@
+
 const supermarket = [
     {
     id: 1,
@@ -84,13 +85,10 @@ if (items) {
   items.addEventListener("click", e => {
     const btn = e.target.closest(".btn"); 
     if (!btn) return;
-
     const id = Number(btn.closest(".it").dataset.id);
     const product = supermarket.find(item => item.id === id);
-
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
-
     updateCartCount();
   });
 }
@@ -104,23 +102,91 @@ function updateCartCount() {
 
 updateCartCount();
 
+const cartDisp = document.querySelector(".cart-disp");
+function updateCartCount() {
+  if (cartCount) {
+    cartCount.innerText = cart.length;
+  }
+}
 
-const cartDisp = document.querySelector(".cart-disp")
-if(cartDisp){
-  cart.forEach((item) => {
-  cartDisp.innerHTML += `
-    <div class="sub-item" data-id="${item.id}">
-      <div class="item-image">
-        <img src="${item.image}" alt="${item.name}">
+if (cartDisp) {
+  if(cart.length <1){
+    cartDisp.innerHTML += `<p class="item-mess">No Item Here</p>`
+  }
+  else{
+    cart.forEach((item) => {
+    cartDisp.innerHTML += `
+      <div class="sub-item" data-id="${item.id}">
+        <div class="item-image">
+          <img src="${item.image}" width="150px">
+        </div>
+        <div class="item-details">
+          <h3 class="item-name">${item.name}</h3>
+          <p class="item-price">GH¢${item.price}</p>
+        </div>
+        <button class="rem">
+          <i class="bi bi-trash"></i>
+        </button>
       </div>
-      <div class="item-details">
-        <h3 class="item-name">${item.name}</h3>
-        <p class="item-price">GH¢${item.price.toFixed(2)}</p>
-      </div>
-      <button class="rem">
-        <i class="bi bi-trash"></i>
-      </button>
-    </div>
-  `;
+    `;
+  });
+  }
+cartDisp.addEventListener("click", (e) => {
+  const rem = e.target.closest(".rem");
+  if (!rem) return;
+  const itemEl = rem.closest(".sub-item");
+  const id = Number(itemEl.dataset.id);
+  const index = cart.findIndex(item => item.id === id);
+  if (index !== -1) {
+    cart.splice(index, 1);
+  }
+  itemEl.remove();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  cartTt(); 
 });
 }
+updateCartCount();
+
+
+const sub = document.querySelector(".sub-total");
+
+function cartTt() {
+  if (!sub || !cart) return;
+  sub.innerHTML = "";
+  const cartTotal = cart.reduce(
+    (total, item) => total + Number(item.price),
+    0
+  );
+  const p = document.createElement("p");
+  const order = document.createElement("h1");
+  const discount = document.createElement("p")
+  order.textContent = "Order Summary"
+  p.textContent = `Total: GH¢${cartTotal.toFixed(2)}`;
+  const num = document.createElement("p")
+  num.textContent = `Number of Items :  ${cart.length}`
+  sub.append(order)
+  sub.append(num)
+
+  if(cartTotal >= 100){
+    const dis = 0.1;
+    let newDis = cartTotal * dis;
+    let newTotal = cartTotal - newDis;
+    discount.textContent = `Discount : Congrats, you have a discount of 10%, `
+    p.textContent = `Total: GH¢${newTotal.toFixed(2)}`;
+  }
+  else{
+    discount.textContent = `Discount: 0 `
+
+  }
+    sub.append(discount)
+
+  sub.append(p);
+}
+
+cartTt();
+
+const btns = document.querySelector(".cart-btn")
+btns.addEventListener("click", function(){
+  
+})

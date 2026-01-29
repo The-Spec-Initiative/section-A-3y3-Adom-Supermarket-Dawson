@@ -6,7 +6,8 @@
 body {
     margin: 0;
     padding: 0;
-    line-height: 1.4;
+    line-height: 1.6;
+    color: #333;
 }
 
 .head {
@@ -14,7 +15,7 @@ body {
     justify-content: space-around;
     align-items: center;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     background: white;
     position: sticky;
     top: 0;
@@ -23,28 +24,29 @@ body {
 
 .nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .nav a {
     color: #333;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .nav a:hover {
     color: #1e88e5;
-    text-decoration: underline;
-    text-transform: lowercase;
 }
-.nav-icons{
+
+.nav-icons {
     display: flex;
-    gap: 10px;
+    gap: 1rem;
 }
+
 .nav-icons a {
     color: #333;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
     font-size: 1.2rem;
 }
 
@@ -55,90 +57,271 @@ body {
 .main-items {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
 }
 
 .main-items img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     justify-items: center;
+    height: 250vh;
+    width: 100%;
 }
 
 .it {
     width: 100%;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .it img {
     width: 100%;
-    height: 300px;
+    height: 320px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 .it h3 {
-    margin: 0.5rem 0 0.25rem 0;
-    font-size: 1rem;
-    line-height: 1.3;
+    margin: 1rem 0.5rem 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: #222;
 }
 
 .it p {
-    margin: 0.25rem 0;
+    margin: 0 0.5rem 1rem;
     font-size: 0.9rem;
-    line-height: 1.3;
+    line-height: 1.5;
     color: #666;
 }
 
 .it:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .btn {
     background: #1e88e5;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .btn:hover {
     background: #1565c0;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+    box-shadow: 0 6px 16px rgba(30, 136, 229, 0.3);
 }
 
 .sub {
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     align-items: center;
 }
 
 .shop {
     padding: 1rem 1.5rem;
 }
-.sub-icons{
+
+.sub-icons {
     position: relative;
 }
-.sub-icons p{
+
+.sub-icons p {
     position: absolute;
     bottom: 1px;
     left: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    width: 700px;
+    margin-left: 50px;
+}
+
+.item-image {
+    height: 30vh;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.rem {
+    background-color: #e53935;
+    height: 50px;
+    color: white;
+    border-radius: 8px;
+    width: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.rem:hover {
+    background-color: #c62828;
+    transform: scale(1.05);
+}
+
+.item-mess {
+    padding: 1.5rem;
+    background-color: #1e88e5;
+    color: white;
+    font-size: 1.1rem;
+    border-left: 6px solid #1565c0;
+    border-radius: 4px;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.item-mess:hover {
+    background-color: #1976d2;
+}
+
+.sub-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: #fafafa;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.cont {
+    display: flex;
+    gap: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+    background: white;
+
+}
+
+.cont a {
+    text-decoration: none;
+    color: #333;
+}
+
+.cont:hover {
+    border-color: #1e88e5;
+    box-shadow: 0 2px 8px rgba(30, 136, 229, 0.15);
+    transform: translateY(-2px);
+}
+.total {
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    background-color: #FBFBFB;
+    color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 365px;
+    width: 309px;
+    margin-right: 20px;
+}
+.cart-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #1877F2;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.cart-btn:hover {
+    background-color: #328bff;
+}
+.disp{
+    display: flex;
+    justify-content: space-between;
+}
+.hello{
+    color: #000000;
+}
+.sub-total h1{
+    font-size: 20px;
+}
+.sub-total p{
+    color: #000000;
     font-size: 15px;
 }
-.sub-item{
-    display: flex;
+
+
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .sub {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .items {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .sub-item {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .item-image {
+        height: 40vh;
+        width: 100%;
+    }
+
+    .sub-cart {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cart-btn {
+        width: 100%;
+    }
+
+    .total {
+        width: 100%;
+        text-align: center;
+    }
 }
