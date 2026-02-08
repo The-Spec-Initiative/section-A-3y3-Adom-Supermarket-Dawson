@@ -144,9 +144,12 @@ cartDisp.addEventListener("click", (e) => {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   cartTt(); 
+  cartClear();
 });
 }
 updateCartCount();
+cartClear();
+
 
 
 const sub = document.querySelector(".sub-total");
@@ -186,7 +189,3 @@ function cartTt() {
 
 cartTt();
 
-const btns = document.querySelector(".cart-btn")
-btns.addEventListener("click", function(){
-  
-})
